@@ -4,9 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zhabka Statistic</title>
+    <style>
+        .circle {
+            position: absolute;
+            display: block;
+            float: left;
+        }
+        .one circle {
+        fill: rgba(0,0,0,0);
+        stroke-width: 15;
+        stroke: #0BA8EC;
+        stroke-dasharray: 408px 408px;
+        }
+        circle {
+        fill: rgba(0,0,0,0);
+        stroke-width: 15;
+        stroke-dasharray: 408px 408px;
+        }
+        .one circle:nth-child(2n){
+        stroke: #E5A90C !important;
+        stroke-width: 15 !important;
+        }
+        .two circle:nth-child(2n){
+            stroke: #F11CC2;
+            stroke-width: 15;
+        }
+        .three circle:nth-child(2n){
+        stroke: blue !important;
+        stroke-width: 15 !important;
+        }
+        .four circle:nth-child(2n){
+            stroke: red;
+            stroke-width: 15;
+        }
+        .five circle:nth-child(2n){
+        stroke: aqua !important;
+        stroke-width: 15 !important;
+        }
+        .six circle:nth-child(2n){
+            stroke: green;
+            stroke-width: 15;
+        }
+    </style>
 </head>
 <body>
     <a href="">xui</a>
-    
+    <div class="circle one">85%</div>
+    <div class="circle two">80%</div>
+    <div class="circle three">75%</div>
+    <div class="circle four">60%</div>
+    <div class="circle five">45%</div>
+    <div class="circle six">15%</div>
+
+    <script>
+        var Circle = function(sel){
+        var circles = document.querySelectorAll(sel);
+        [].forEach.call(circles,function(el){
+            var valEl = parseFloat(el.innerHTML);
+            valEl = valEl*408/100;
+            el.innerHTML = '<svg width="160" height="160"><circle transform="rotate(-90)" r="65" cx="-80" cy="80" /><circle transform="rotate(-90)" style="stroke-dasharray:'+valEl+'px 408px;" r="65" cx="-80" cy="80" /></svg>';
+            
+        });
+    };
+    Circle('.circle');
+    </script>
 </body>
 </html>
